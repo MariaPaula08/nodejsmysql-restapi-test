@@ -2,13 +2,10 @@ import { pool } from '../db.js'
 
 export const getEmployees = async (req,res) => {
     try{
-        throw new Error('Mi Error')
         const [rows] = await pool.query('SELECT * FROM employee')
         res.json(rows)
     } catch (error) {
-        return res.status(500).json({
-            message:'Algo va mal'
-        })
+        return res.sendStatus(error)
     }
 }
 
